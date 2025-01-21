@@ -1,0 +1,50 @@
+Justify your answers, but keep them short!
+
+Question 1:
+You likely used some supervised learning algorithm to create a model that predicts success. If so, how does this model make it's predictions? That is, if the CEO asked for some rules or logic that predict a successful contact, can you provide them? If not, why not?
+We used a learning algorithm called Histogram Gradient Boosting to predict customer contacts.
+This model makes its predictions by building an ensemble of decision trees that use histograms to efficiently
+handle continuous features and capture patterns in the data. Since the algorithm works more like a black box by capturing intricate data
+through many decisions tree, it is difficult to say the logic or rules about how the algorithm predicts if a contact is successful. 
+Many weak learners are combined so its hard to say how the model predicts a successful contact.
+
+
+Question 2:
+How much better is your program than a simple strategy that simply contacts everyone?
+
+So from training our model it makes about 6.5 times than if we contacted everyone. From contacting everyone
+we would make $261511.80 but using our model with the training data we would make around 1.7 million. This 
+looks good but once we used the full data file after, it didn't perform as well. It only
+performed marginally better than if we contacted everyone. It would make around an extra $7000 at best. The
+reason for the first profit number being so much higher would probably be due to overfitting the training data
+and not having the best features.
+
+
+Question 3:
+Are there any attributes in the dataset that are irrelevant or unecessary for your decision?
+
+Yes, in order to reduce overfitting and noise, we minimized how many variables are relevant for the model's decision. This way, our model should perform as well on real world data 
+(no success indicator) as it does while it is being trained. Balance, campaign, previous, and the
+three outcomes features are taken into account to ensure fast predictions. Training will all features
+created too much noise which made the model worse at predicting who to call than just 
+calling everybody. Feature selection would probably be a good strategy to implement if we had 
+to do it again in order to find the best features.
+
+Question 4:
+Do any of the complications in lecture slides #6 apply here? How?
+Yes, some of the complications can apply here. 
+Overfitting could be an issue because the model is trained and evaluated on the same dataset, which might lead to overly optimistic performance metrics that don't generalize well to new data. 
+Additionally, there's a risk of mistaking correlation for causation since the model identifies patterns in the data that correlate with success but doesn't establish that these factors cause the success. 
+Therefore, contacting customers based on these correlations might not lead to the expected outcomes if the underlying causal relationships are not properly understood.
+
+
+Question 5:
+Report your estimates of your model's accuracy, sensitivity, and specificity. Refer to line numbers in your repository where these things are measured.
+
+The model's accuracy is ~30.38%, and is measured at lines 60-61 in main.py. The model's sensitivity is ~87.55%, and is meaured at lines 64-65 in main.py.
+The model's specificity is ~22.75%, and is measured at lines 68-70 in main.py. All of these results are calculated when data is evaluated in identify_customers.
+These results tell us that our model is very sensitive, and quick to identify who would be good to call (as seen by the 87.55% sensitivity), but having low accuracy and 
+low specificity means our model makes a lot of errors in classifying people to call. As seen from our profit, this doesn't make
+our model a bad performer.
+
+Note:Originally made a mistake and thought we excluded data, but went back and implemented it after due date. 
